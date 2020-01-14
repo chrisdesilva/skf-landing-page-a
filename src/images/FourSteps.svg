@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <clipPath id="clip-Web_1920_1">
+      <rect width="1920" height="1080"/>
+    </clipPath>
+  </defs>
+  <g id="Web_1920_1" data-name="Web 1920 – 1" clip-path="url(#clip-Web_1920_1)">
+    <rect width="1920" height="1080" fill="#fff"/>
+    <g id="Ellipse_1" data-name="Ellipse 1" transform="translate(189 208)" fill="#fff" stroke="#7d2467" stroke-width="4">
+      <circle cx="94.5" cy="94.5" r="94.5" stroke="none"/>
+      <circle cx="94.5" cy="94.5" r="92.5" fill="none"/>
+    </g>
+    <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(878 208)" fill="#fff" stroke="#7d2467" stroke-width="4">
+      <circle cx="94.5" cy="94.5" r="94.5" stroke="none"/>
+      <circle cx="94.5" cy="94.5" r="92.5" fill="none"/>
+    </g>
+    <g id="Ellipse_3" data-name="Ellipse 3" transform="translate(538 497)" fill="#fff" stroke="#7d2467" stroke-width="4">
+      <circle cx="94.5" cy="94.5" r="94.5" stroke="none"/>
+      <circle cx="94.5" cy="94.5" r="92.5" fill="none"/>
+    </g>
+    <g id="Ellipse_4" data-name="Ellipse 4" transform="translate(1227 497)" fill="#fff" stroke="#7d2467" stroke-width="4">
+      <circle cx="94.5" cy="94.5" r="94.5" stroke="none"/>
+      <circle cx="94.5" cy="94.5" r="92.5" fill="none"/>
+    </g>
+    <text id="_1" data-name="1" transform="translate(274 320)" fill="#707070" font-size="50" font-family="WorkSans-Regular, Work Sans"><tspan x="0" y="0">1</tspan></text>
+    <text id="_2" data-name="2" transform="translate(615 612)" fill="#707070" font-size="60" font-family="WorkSans-Regular, Work Sans"><tspan x="0" y="0">2</tspan></text>
+    <text id="_3" data-name="3" transform="translate(955 323)" fill="#707070" font-size="60" font-family="WorkSans-Regular, Work Sans"><tspan x="0" y="0">3</tspan></text>
+    <text id="_4" data-name="4" transform="translate(1303 612)" fill="#707070" font-size="60" font-family="WorkSans-Regular, Work Sans"><tspan x="0" y="0">4</tspan></text>
+    <text id="Select_your_school" data-name="Select your school" transform="translate(148 452)" fill="#707070" font-size="32" font-family="WorkSans-Regular, Work Sans"><tspan x="0" y="0">Select your school</tspan></text>
+    <text id="Apply_and_get_approved" data-name="Apply and get approved" transform="translate(447 741)" fill="#707070" font-size="32" font-family="WorkSans-Regular, Work Sans"><tspan x="0" y="0">Apply and get approved</tspan></text>
+    <text id="Dive_into_your_education" data-name="Dive into your education" transform="translate(798 452)" fill="#707070" font-size="32" font-family="WorkSans-Regular, Work Sans"><tspan x="0" y="0">Dive into your education</tspan></text>
+    <text id="Transform_your_future" data-name="Transform your future" transform="translate(1149 741)" fill="#707070" font-size="32" font-family="WorkSans-Regular, Work Sans"><tspan x="0" y="0">Transform your future</tspan></text>
+    <path id="Path_2" data-name="Path 2" d="M378,315.486s80.216,161.4,179.874,197.273" transform="translate(4 3)" fill="none" stroke="#55cadc" stroke-width="2" stroke-dasharray="10"/>
+    <path id="Path_4" data-name="Path 4" d="M690.106,515.759s36.147-172.413,180.849-219.377" transform="translate(6 -14)" fill="none" stroke="#55cadc" stroke-width="2" stroke-dasharray="10"/>
+    <path id="Path_5" data-name="Path 5" d="M1067,318.486s139.421,164.158,231.243,170.57" transform="translate(7 5)" fill="none" stroke="#55cadc" stroke-width="2" stroke-dasharray="10"/>
+  </g>
+</svg>
