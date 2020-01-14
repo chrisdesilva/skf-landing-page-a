@@ -70,8 +70,15 @@ const IndexPage = () => {
 	return (
 		<div>
 			<SEO title="Home" />
-			<div className="w-48 ml-4 mt-4">
-				<Img fluid={data.logo.childImageSharp.fluid} alt="Skills Fund logo" />
+			<div className="flex justify-between">
+				<div className="w-48 ml-4 mt-4">
+					<Img fluid={data.logo.childImageSharp.fluid} alt="Skills Fund logo" />
+				</div>
+				<div className="mr-4 mt-4">
+					<button className="bg-secondary py-2 px-4 font-bold text-white rounded-full w-48 cursor-pointer">
+						Apply Now
+					</button>
+				</div>
 			</div>
 			<header className="flex flex-col items-center mt-8">
 				<div className="flex flex-col items-center px-2 md:w-1/2">
@@ -92,7 +99,7 @@ const IndexPage = () => {
 			<Img fluid={data.banner.childImageSharp.fluid} alt="Teal banner" />
 			<section className="flex flex-col md:flex-row md:justify-around md:items-center ">
 				<div className="md:w-1/3 p-4">
-					<h2 className="font-normal md:text-4xl">Wondering How To Pay For Bootcamps?</h2>
+					<h2 className="font-normal md:text-4xl">Wondering How To Pay For A Bootcamp?</h2>
 					<p>
 						Education is a life-changing investment in your future & the career you've been dreaming of. We
 						make the dream attainable by helping you finance your education. Skills Fund provides the help
