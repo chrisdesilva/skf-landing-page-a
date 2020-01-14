@@ -83,7 +83,7 @@ const IndexPage = () => {
 					</p>
 					<button
 						onClick={() => animateScrollTo(document.querySelector('.contact'))}
-						className="bg-secondary py-2 px-4 font-bold text-white rounded-full w-48"
+						className="bg-secondary py-2 px-4 font-bold text-white rounded-full w-48 cursor-pointer"
 					>
 						Get More Info
 					</button>
@@ -163,9 +163,7 @@ const IndexPage = () => {
 				<h2 className="font-normal text-center md:text-4xl">
 					Ready to transform your career? Have more questions?
 				</h2>
-				<form
-					className={isFormSubmitted ? 'flex flex-col items-center submitted' : 'flex flex-col items-center'}
-				>
+				<form className="flex flex-col items-center">
 					<label htmlFor="email">Email address</label>
 					<input
 						className="mb-4 border-2 border-black p-2 w-64"
@@ -191,7 +189,7 @@ const IndexPage = () => {
 						placeholder="Enter any questions or comments for our customer trust team"
 					/>
 					<input
-						className="bg-secondary py-2 px-4 font-bold text-white rounded-full w-48"
+						className="bg-secondary py-2 px-4 font-bold text-white rounded-full w-48 cursor-pointer"
 						type="submit"
 						value="Submit"
 						onClick={handleFormSubmit}
