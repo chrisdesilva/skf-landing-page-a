@@ -1,7 +1,8 @@
 module.exports = {
 	siteMetadata: {
 		title: `Fund Your Future`,
-		description: ``,
+		description: `Skills Fund finances students to attend the best coding and data science programs around. We believe in 100% loan transparency, and have aligned all incentives around student success.`,
+		keywords: `coding loans, bootcamp loans, tuition loan, tuition financing, coding, web development, UX design, UI design coding bootcamp, bootcamp, full-time, part-time, student financing, student loans, loans, cosigner, underwriting, credit, credit score`,
 		author: `@desilvadev`
 	},
 	plugins: [
