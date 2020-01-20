@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import SEO from '../components/seo';
 import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
@@ -61,6 +61,22 @@ const IndexPage = () => {
 	`);
 
 	const [ isFormSubmitted, FormSubmitted ] = useState(false);
+	const [ navBackground, setNavBackground ] = useState(false);
+	const navRef = useRef();
+
+	navRef.current = navBackground;
+	useEffect(() => {
+		const handleScroll = () => {
+			const show = window.scrollY > 300;
+			if (navRef.current !== show) {
+				setNavBackground(show);
+			}
+		};
+		document.addEventListener('scroll', handleScroll);
+		return () => {
+			document.removeEventListener('scroll', handleScroll);
+		};
+	}, []);
 
 	const handleFormSubmit = (e) => {
 		e.preventDefault();
@@ -70,22 +86,29 @@ const IndexPage = () => {
 	return (
 		<div>
 			<SEO title="Home" />
-			<div className="flex justify-between">
-				<div className="w-48 ml-4 mt-4">
-					<Img fluid={data.logo.childImageSharp.fluid} alt="Skills Fund logo" />
+			<nav className="flex fixed w-full z-10 bg-white px-2">
+				<div className="w-1/2 py-4 my-auto">
+					<Img
+						className={navBackground ? 'w-32 logo' : 'w-40 logo'}
+						fluid={data.logo.childImageSharp.fluid}
+						alt="Skills Fund logo"
+					/>
 				</div>
-				<div className="mr-4 mt-4">
-					<button className="bg-secondary py-2 px-4 font-bold text-white rounded-full w-48 cursor-pointer">
+				<div className="py-4 w-1/2 flex justify-end ">
+					<a
+						href="https://my.skills.fund/register"
+						className="bg-secondary py-2 px-4 font-bold text-white text-center w-32 rounded-full cursor-pointer"
+					>
 						Apply Now
-					</button>
+					</a>
 				</div>
-			</div>
-			<header className="flex flex-col items-center mt-8">
-				<div className="flex flex-col items-center px-2 md:w-1/2">
+			</nav>
+			<header className="flex flex-col items-center">
+				<div className="flex flex-col items-center px-2 md:w-1/2 mt-32">
 					<h1 className="font-normal">Fund Your Future</h1>
 					<p className="text-center">
-						Bootcamps are a great investment in transforming your future. We partner with schools that help
-						you take control of your career - <br />
+						Bootcamps are a great investment to transform your future. We partner with the best schools to
+						help you to help you take control of your career - <br />
 						<strong className="text-secondary">without breaking the bank.</strong>
 					</p>
 					<button
@@ -101,9 +124,9 @@ const IndexPage = () => {
 				<div className="md:w-1/3 p-4">
 					<h2 className="font-normal md:text-4xl">Wondering How To Pay For A Bootcamp?</h2>
 					<p>
-						Education is a life-changing investment in your future & the career you've been dreaming of. We
+						Bootcamps are a life-changing investment in your future & the career you've been dreaming of. We
 						make the dream attainable by helping you finance your education. Skills Fund provides the help
-						you deserve to build the career you want. Simple, straightforward bootcamp loans.
+						you deserve to build the career you want with simple, straightforward bootcamp loans.
 					</p>
 				</div>
 				<div className="md:w-1/4">
