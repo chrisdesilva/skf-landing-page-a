@@ -62,6 +62,23 @@ const IndexPage = () => {
 
 	const [ isFormSubmitted, FormSubmitted ] = useState(false);
 	const [ navBackground, setNavBackground ] = useState(false);
+	const [ values, setValues ] = useState({
+		email: '',
+		stage: '',
+		comments: ''
+	});
+
+	const [ IP, setIP ] = useState('');
+
+	// Get IP address from client for Hubspot analytics
+	async function fetchIP() {
+		const res = await fetch('https://ip.nf/me.json');
+		res.json().then((res) => setIP(res.ip.ip)).catch((err) => console.log(err));
+	}
+
+	useEffect(() => {
+		fetchIP();
+	});
 	const navRef = useRef();
 
 	navRef.current = navBackground;
@@ -78,15 +95,79 @@ const IndexPage = () => {
 		};
 	}, []);
 
+	const handleInputChange = (e) => {
+		const { name, value } = e.target;
+		setValues({ ...values, [name]: value });
+	};
+
 	const handleFormSubmit = (e) => {
 		e.preventDefault();
+		const url = `https://api.hsforms.com/submissions/v3/integration/submit/3871135/e1d66c17-474b-4ff4-a302-076223691c3f`;
+
+		// hsCookie gets the data necessary to track Hubspot analytics
+		const hsCookie = document.cookie.split(';').reduce((cookies, cookie) => {
+			const [ name, value ] = cookie.split('=').map((c) => c.trim());
+			cookies[name] = value;
+			return cookies;
+		}, {});
+
+		//   field names are all set to match internal values on Hubspot
+		const data = {
+			fields: [
+				{
+					name: 'email',
+					value: `${values.email}`
+				},
+				{
+					name: 'next_steps',
+					value: `${values.stage}`
+				},
+				{
+					name: 'comments',
+					value: `${values.comments}`
+				},
+				{
+					name: 'stakeholder_type',
+					value: 'Student'
+				},
+				{
+					name: 'lead_form_submit_page',
+					value: 'Upper Funnel'
+				}
+			],
+			context: {
+				hutk: hsCookie.hubspotutk,
+				pageUri: `https://info.skills.fund`,
+				pageName: `Landing Page A`,
+				ipAddress: `${IP}`
+			}
+		};
+
+		fetch(url, {
+			method: 'POST',
+			body: JSON.stringify(data),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		})
+			.then((res) => res.json())
+			.then((response) => console.log('success', response))
+			.catch((error) => console.log('error: ', error));
 		FormSubmitted(true);
 	};
 
 	return (
 		<div>
 			<SEO title="Home" />
-			<nav className="flex fixed w-full z-10 bg-white px-2">
+			<nav
+				className={
+					navBackground ? (
+						'flex fixed w-full z-10 bg-white px-2 shadow-xl logo'
+					) : (
+						'flex fixed w-full z-10 bg-white px-2 logo'
+					)
+				}
+			>
 				<div className="w-1/2 py-4 my-auto">
 					<Img
 						className={navBackground ? 'w-32 logo' : 'w-40 logo'}
@@ -111,12 +192,12 @@ const IndexPage = () => {
 						help you to help you take control of your career - <br />
 						<strong className="text-secondary">without breaking the bank.</strong>
 					</p>
-					<button
-						onClick={() => animateScrollTo(document.querySelector('.contact'))}
+					<a
+						href="https://skills.fund/students"
 						className="bg-secondary py-2 px-4 font-bold text-white rounded-full w-48 cursor-pointer"
 					>
-						Get More Info
-					</button>
+						Choose Your School
+					</a>
 				</div>
 			</header>
 			<Img fluid={data.banner.childImageSharp.fluid} alt="Teal banner" />
@@ -147,30 +228,36 @@ const IndexPage = () => {
 			</section>
 			<section className="px-4 py-8 flex flex-col items-center bg-primary-dark text-white">
 				<div className="flex flex-col items-center">
-					<h2 className="font-normal text-center md:text-4xl">We Work With Schools We Believe In</h2>
+					<h2 className="font-normal text-center md:text-4xl">We Only Work With The Best Schools</h2>
 					<p className="md:w-1/2">
 						We evaluate school quality and only partner with programs worth your time and money. Our
 						education partners are committed to your success in the classroom and beyond. We look for:{' '}
 					</p>
 				</div>
-				<div className="flex px-8">
-					<div className="w-1/3 flex flex-col items-center">
+				<div className="flex flex-col md:flex-row md:p-8 w-full">
+					<div className="md:w-1/3 flex flex-col items-center">
 						<div className="w-24 border-2 border-white rounded-full mb-4 bg-white">
 							<Img fluid={data.certificate.childImageSharp.fluid} alt="Certificate of achievement" />
 						</div>
-						<p className="text-center">High quality of curriculum</p>
+						<p className="text-center">
+							Excellent curriculum<br /> and instruction
+						</p>
 					</div>
-					<div className="w-1/3 flex flex-col items-center">
+					<div className="md:w-1/3 flex flex-col items-center">
 						<div className="w-24 border-2 border-white rounded-full mb-4 bg-white">
 							<Img fluid={data.pull.childImageSharp.fluid} alt="Four people using a pulley" />
 						</div>
-						<p className="text-center">Action-oriented career services </p>
+						<p className="text-center">
+							Action-oriented <br /> career services{' '}
+						</p>
 					</div>
-					<div className="w-1/3 flex flex-col items-center">
+					<div className="md:w-1/3 flex flex-col items-center">
 						<div className="w-24 border-2 border-white rounded-full mb-4 bg-white">
 							<Img fluid={data.finishLine.childImageSharp.fluid} alt="Crossing the finish line" />
 						</div>
-						<p className="text-center">Impressive student outcomes</p>
+						<p className="text-center">
+							Impressive student <br /> outcomes
+						</p>
 					</div>
 				</div>
 			</section>
@@ -193,37 +280,62 @@ const IndexPage = () => {
 				<h2 className="font-normal text-center md:text-4xl">
 					Ready to transform your career? Have more questions?
 				</h2>
-				<form className="flex flex-col items-center">
+				<form
+					name="apply-skills-fund"
+					method="post"
+					className="flex flex-col items-center w-full md:w-1/2"
+					onSubmit={handleFormSubmit}
+				>
 					<label htmlFor="email">Email address</label>
 					<input
-						className="mb-4 border-2 border-black p-2 w-64"
+						className="mb-4 border-2 border-black p-2 w-full"
 						type="email"
 						id="email"
+						name="email"
 						placeholder="Enter your email address"
 						required
+						onChange={handleInputChange}
+						onBlur={handleInputChange}
+						value={values.email}
 					/>
-					<label htmlfor="stage">What are your next steps?</label>
-					<select className="mb-4 border-2 border-black p-2 w-64" id="stage">
-						<option disabled selected>
-							Select an option
-						</option>
-						<option>Researching different programs</option>
-						<option>Researching different schools</option>
-						<option>Applying to a school</option>
-						<option>Applying for financing</option>
+					<label htmlFor="stage">What are your next steps?</label>
+					<select
+						onChange={handleInputChange}
+						onBlur={handleInputChange}
+						className="mb-4 border-2 border-black p-2 w-full"
+						id="stage"
+						name="stage"
+						value={values.stage}
+					>
+						<option>Select an option</option>
+						<option value="Researching schools or programs">Researching schools or programs</option>
+						<option value="Researching financing options">Researching financing options</option>
+						<option value="Applying to a school">Applying to a school</option>
+						<option value="Applying for financing">Applying for financing</option>
 					</select>
-					<label htmlfor="comments">Questions/Comments</label>
+					<label htmlFor="comments">Questions/Comments</label>
 					<textarea
-						className="mb-4 border-2 border-black p-2 h-24 w-64"
+						className="mb-4 border-2 border-black p-2 h-24 w-full"
 						id="comments"
+						name="comments"
 						placeholder="Enter any questions or comments for our customer trust team"
+						onChange={handleInputChange}
+						onBlur={handleInputChange}
+						value={values.comments}
 					/>
-					<input
-						className="bg-secondary py-2 px-4 font-bold text-white rounded-full w-48 cursor-pointer"
-						type="submit"
-						value="Submit"
-						onClick={handleFormSubmit}
-					/>
+					<div className="hidden">
+						<input type="text" name="Stakeholder Type" value="Student" readOnly />
+						<input type="text" name="Lead Form Submit Page" value="Upper Funnel" readOnly />
+					</div>
+					{isFormSubmitted ? (
+						<p>Thanks for contacting us! We'll be in touch shortly!</p>
+					) : (
+						<input
+							className="bg-secondary py-2 px-4 font-bold text-white rounded-full w-48 cursor-pointer"
+							type="submit"
+							value="Submit"
+						/>
+					)}
 				</form>
 			</section>
 		</div>
