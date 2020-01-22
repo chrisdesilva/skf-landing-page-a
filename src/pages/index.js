@@ -276,7 +276,7 @@ const IndexPage = () => {
 					&nbsp;
 				</div>
 			</section>
-			<section className="flex flex-col items-center my-8 contact">
+			<section className="flex flex-col items-center my-8 contact px-2">
 				<h2 className="font-normal text-center md:text-4xl">
 					Ready to transform your career? Have more questions?
 				</h2>
