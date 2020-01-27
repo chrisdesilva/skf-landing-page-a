@@ -169,11 +169,14 @@ const IndexPage = () => {
 				}
 			>
 				<div className="w-1/2 py-4 my-auto">
-					<Img
-						className={navBackground ? 'w-32 logo' : 'w-40 logo'}
-						fluid={data.logo.childImageSharp.fluid}
-						alt="Skills Fund logo"
-					/>
+					<a href="https://skills.fund">
+						{' '}
+						<Img
+							className={navBackground ? 'w-32 logo' : 'w-40 logo'}
+							fluid={data.logo.childImageSharp.fluid}
+							alt="Skills Fund logo"
+						/>
+					</a>
 				</div>
 				<div className="py-4 w-1/2 flex justify-end ">
 					<a
