@@ -192,7 +192,7 @@ const IndexPage = () => {
 					<h1 className="font-normal">Fund Your Future</h1>
 					<p className="text-center">
 						Bootcamps are a great investment to transform your future. We partner with the best schools to
-						help you to help you take control of your career - <br />
+						help you to help you take control of your career -{' '}
 						<strong className="text-secondary">without breaking the bank.</strong>
 					</p>
 					<a
