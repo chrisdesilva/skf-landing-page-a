@@ -231,10 +231,10 @@ const IndexPage = () => {
 			</section>
 			<section className="px-4 py-8 flex flex-col items-center bg-primary-dark text-white">
 				<div className="flex flex-col items-center">
-					<h2 className="font-normal text-center md:text-4xl">We Only Work With The Best Schools</h2>
+					<h2 className="font-normal text-center md:text-4xl">Schools Worth Your Time & Money</h2>
 					<p className="md:w-1/2">
-						We evaluate school quality and only partner with programs worth your time and money. Our
-						education partners are committed to your success in the classroom and beyond. We look for:{' '}
+						We evaluate school quality and only partner with schools that meet our high standards. We look
+						for:{' '}
 					</p>
 				</div>
 				<div className="flex flex-col md:flex-row md:p-8 w-full">
