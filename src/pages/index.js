@@ -293,6 +293,75 @@ const IndexPage = () => {
           </div>
         </div>
       </section>
+      <section className="px-4 py-16 flex flex-col items-center bg-gray-100">
+        <div className="lg:w-1/3">
+          <h2 className="font-normal lg:text-4xl">
+            Select Your Skills Training
+          </h2>
+        </div>
+        <div className="flex flex-col lg:flex-row lg:p-8 w-full">
+          <div className="lg:w-1/3 flex flex-col items-center">
+            <a
+              href="https://skills.fund/students/coding"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-4 border-primary-dark border-2 rounded w-64 text-center mb-4"
+            >
+              Web Development
+            </a>
+          </div>
+          <div className="lg:w-1/3 flex flex-col items-center">
+            <a
+              href="https://skills.fund/students/data-science"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-4 border-primary-dark border-2 rounded w-64 text-center mb-4"
+            >
+              Data Science
+            </a>
+          </div>
+          <div className="lg:w-1/3 flex flex-col items-center">
+            <a
+              href="https://skills.fund/students/ux-ui-design"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-4 border-primary-dark border-2 rounded w-64 text-center mb-4"
+            >
+              UX/UI Design
+            </a>
+          </div>
+          <div className="lg:w-1/3 flex flex-col items-center">
+            <a
+              href="https://skills.fund/students/cybersecurity"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-4 border-primary-dark border-2 rounded w-64 text-center mb-4"
+            >
+              Cybersecurity
+            </a>
+          </div>
+          <div className="lg:w-1/3 flex flex-col items-center">
+            <a
+              href="https://skills.fund/students/coding"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-4 border-primary-dark border-2 rounded w-64 text-center mb-4"
+            >
+              Mobile Development
+            </a>
+          </div>
+          <div className="lg:w-1/3 flex flex-col items-center">
+            <a
+              href="https://skills.fund/students/medical-assistant-training"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-4 border-primary-dark border-2 rounded w-64 text-center mb-4"
+            >
+              Healthcare
+            </a>
+          </div>
+        </div>
+      </section>
       <section className="py-8">
         <div
           className="yotpo yotpo-reviews-carousel"
