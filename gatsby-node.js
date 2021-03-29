@@ -1,7 +1,16 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+exports.createPages = ({ graphql, actions }) => {
+    const { createPage, createRedirect } = actions
 
-// You can delete this file if you're not using it
+    createRedirect({
+        fromPath: "/go",
+        toPath:
+          "/?utm_source=school&utm_medium=printedskfbrochure&utm_campaign=studentbrochure",
+      })
+    createRedirect({
+        fromPath: "/*",
+        toPath: "https://www.ascentfunding.com/bootcamp-loans/compare-schools/",
+        isPermanent: true,
+        force: true,
+    })
+}
+
